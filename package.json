@@ -1,10 +1,10 @@
 {
-  "name": "typeahead-standalone",
+  "name": "tfm-typeahead-standalone",
   "type": "module",
-  "title": "typeahead-standalone",
-  "description": "A fast fully-featured standalone autocomplete library",
+  "title": "tfm-typeahead-standalone",
+  "description": "[Customised]A fast fully-featured standalone autocomplete library",
   "version": "4.25.1",
-  "homepage": "https://typeahead.digitalfortress.tech",
+  "homepage": "https://tfmcloud.au",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
@@ -23,9 +23,9 @@
     "copy-dts-declarations": "copyfiles -u 1 \"src/**/*.d.*ts\" dist"
   },
   "author": {
-    "name": "Niket Pathak",
-    "email": "contact@niketpathak.com",
-    "url": "https://niketpathak.com"
+    "name": "Two Fat Monkeys",
+    "email": "dev@tfmcloud.au",
+    "url": "https://tfmcloud.au"
   },
   "exports": {
     ".": {
@@ -44,15 +44,15 @@
   "types": "./dist/index.d.cts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitalfortress-tech/typeahead-standalone.git"
+    "url": "https://github.com/twofatmonkeys/typeahead-standalone.git"
   },
   "bugs": {
-    "url": "https://github.com/digitalfortress-tech/typeahead-standalone/issues"
+    "url": "https://github.com/twofatmonkeys/typeahead-standalone/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/digitalfortress-tech/typeahead-standalone/blob/master/LICENSE"
+      "url": "https://github.com/twofatmonkeys/typeahead-standalone/blob/master/LICENSE"
     }
   ],
   "files": [
