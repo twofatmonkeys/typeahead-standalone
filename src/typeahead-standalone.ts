@@ -111,7 +111,7 @@ export default function typeahead<T extends Dictionary>(config: typeaheadConfig<
   local && addToIndex(local);
 
   const input: HTMLInputElement = config.input;
-  input.classList.add(classNames.input);
+  input.classList.add(...classNames.input.split(' '));
   const computedInputStyle = window.getComputedStyle(input);
 
   // Wrapper element
@@ -135,7 +135,7 @@ export default function typeahead<T extends Dictionary>(config: typeaheadConfig<
   const inputHint: HTMLInputElement = input.cloneNode() as HTMLInputElement;
   hint && injectHintEl(inputHint);
 
-  listContainer.classList.add(classNames.list, classNames.hide);
+  listContainer.classList.add(...classNames.list.split(' '), classNames.hide);
   listContainer.tabIndex = 0;
   listContainer.setAttribute('aria-label', 'menu-options');
   listContainer.setAttribute('role', 'listbox');
@@ -181,14 +181,14 @@ export default function typeahead<T extends Dictionary>(config: typeaheadConfig<
    * Display/show the listContainer
    */
   const show = (): void => {
-    listContainer.classList.remove(classNames.hide);
+    listContainer.classList.remove(...classNames.hide.split(' '));
   };
 
   /**
    * Hides the listContainer from DOM
    */
   const hide = (): void => {
-    listContainer.classList.add(classNames.hide);
+    listContainer.classList.add(...classNames.hide.split(' '));
   };
 
   /**
@@ -245,7 +245,7 @@ export default function typeahead<T extends Dictionary>(config: typeaheadConfig<
 
       const renderNotFoundTemplate = (html: string) => {
         const notFoundEl = doc.createElement('div');
-        notFoundEl.classList.add(classNames.notFound);
+        notFoundEl.classList.add(...classNames.notFound.split(' '));
         templatify(notFoundEl, html);
         listContainer.appendChild(notFoundEl);
       };
@@ -284,7 +284,7 @@ export default function typeahead<T extends Dictionary>(config: typeaheadConfig<
 
     // display spinner/loader
     const loaderDiv = doc.createElement('div');
-    loaderDiv.classList.add(classNames.loader);
+    loaderDiv.classList.add(...classNames.loader.split(' '));
     templatify(loaderDiv, templates.loader());
     if (templates?.footer) {
       listContainer.insertBefore(loaderDiv, listContainer.querySelector(`.${classNames.footer}`));
@@ -305,7 +305,7 @@ export default function typeahead<T extends Dictionary>(config: typeaheadConfig<
     // function for rendering typeahead suggestions
     const render = (item: T): HTMLDivElement => {
       const itemElement = doc.createElement('div');
-      itemElement.classList.add(classNames.suggestion);
+      itemElement.classList.add(...classNames.suggestion.split(' '));
       itemElement.setAttribute('role', 'option');
       itemElement.setAttribute('aria-selected', 'false');
       itemElement.setAttribute('aria-label', display(item));
@@ -320,7 +320,7 @@ export default function typeahead<T extends Dictionary>(config: typeaheadConfig<
     // function to render typeahead groups
     const renderGroup = (groupName: string): HTMLDivElement => {
       const groupDiv = doc.createElement('div');
-      groupDiv.classList.add(classNames.group);
+      groupDiv.classList.add(...classNames.group.split(' ')); 
       groupDiv.setAttribute('role', 'group');
       groupDiv.setAttribute('aria-label', groupName);
       if (templates?.group) {
@@ -337,7 +337,7 @@ export default function typeahead<T extends Dictionary>(config: typeaheadConfig<
     // Add header template
     if (templates?.header) {
       const headerDiv = doc.createElement('div');
-      headerDiv.classList.add(classNames.header);
+      headerDiv.classList.add(...classNames.header.split(' '));
       headerDiv.setAttribute('role', 'presentation');
       const templateHtml = templatify(headerDiv, templates.header(resultSet));
       templateHtml && fragment.appendChild(headerDiv);
@@ -363,7 +363,7 @@ export default function typeahead<T extends Dictionary>(config: typeaheadConfig<
         emitInputEvent();
       });
       if (item === selected) {
-        div.classList.add(classNames.selected);
+        div.classList.add(...classNames.selected.split(' '));
         div.setAttribute('aria-selected', 'true');
       }
       fragment.appendChild(div);
@@ -375,7 +375,7 @@ export default function typeahead<T extends Dictionary>(config: typeaheadConfig<
     // Add footer template
     if (templates?.footer) {
       const footerDiv = doc.createElement('div');
-      footerDiv.classList.add(classNames.footer);
+      footerDiv.classList.add(...classNames.footer.split(' '));
       footerDiv.setAttribute('role', 'presentation');
       const templateHtml = templatify(footerDiv, templates.footer(resultSet));
       templateHtml && fragment.appendChild(footerDiv);
@@ -522,7 +522,7 @@ export default function typeahead<T extends Dictionary>(config: typeaheadConfig<
       clear();
       clearListDOM();
       const emptyEl = doc.createElement('div');
-      emptyEl.classList.add(classNames.empty);
+      emptyEl.classList.add(...classNames.empty.split(' '));
       templatify(emptyEl, emptyHtml);
       emptyHtml && listContainer.appendChild(emptyEl);
       return show();
